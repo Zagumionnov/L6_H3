@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+Update post
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1> Update post </h1>
+    <form method="post">
+        <input type="text" name="title" id="title" class="form-control" value="{{ article.title }}" placeholder="Title"><br>
+        <input type="text" name="intro" id="intro" class="form-control" value="{{ article.intro }}" placeholder="Intro">
+        <input type="text" name="text" id="text" class="form-control" value="{{ article.text }}" placeholder="Main text">
+        <input type="submit" class="btn btn-success" value="Update"><br>
+    </form>
+
+</div>
+
+{% endblock %}
