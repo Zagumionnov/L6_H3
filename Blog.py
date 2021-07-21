@@ -27,7 +27,7 @@ class Article(db.Model):
 
 # Page with lists of all posts and sort by date
 
-
+@app.route('/')
 @app.route('/posts')
 def posts():
     articles = Article.query.order_by(Article.date.desc()).all()
