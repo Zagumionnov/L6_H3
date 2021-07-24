@@ -6,6 +6,6 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+ENV FLASK_ENV=development
 
-CMD ["flask", "run", "-h", "0.0.0.0"]
+CMD ["gunicorn", "app:app", "-b", "0.0.0.0:8000"]
