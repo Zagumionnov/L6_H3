@@ -28,6 +28,7 @@ class Article(db.Model):
 # Page with lists of all posts and sort by date
 
 
+@app.route('/')
 @app.route('/posts')
 def posts():
     articles = Article.query.order_by(Article.date.desc()).all()
@@ -57,7 +58,7 @@ def create_article():
             db.session.add(article)
             db.session.commit()
             return redirect('/posts')
-        except:
+        finally:
             return "Error"
 
     else:
@@ -77,7 +78,7 @@ def post_update(id):
         try:
             db.session.commit()
             return redirect('/posts')
-        except:
+        finally:
             return "Error"
 
     else:
@@ -94,7 +95,7 @@ def post_delete(id):
         db.session.delete(article)
         db.session.commit()
         return redirect('/posts')
-    except:
+    finally:
         return "Error"
 
 
